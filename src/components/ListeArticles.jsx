@@ -1,4 +1,3 @@
-// TODO(P301) : Étape 3 (chapitre 3).
 // Affiche une liste de cartes d'articles.
 // Props attendues : articles (tableau), favoris (tableau d'identifiants), onBasculerFavori (fonction).
 import ArticleCard from "./ArticleCard";
