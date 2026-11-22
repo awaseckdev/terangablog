@@ -19,6 +19,7 @@ const articlesFiltres = articlesDeTest.filter((article) =>
   }
 
   return (
+   
     <section>
       <h1>Bienvenue sur Teranga Blog</h1>
       <p>{favoris.length} article(s) en favori</p>
@@ -28,6 +29,7 @@ const articlesFiltres = articlesDeTest.filter((article) =>
         favoris={favoris}
         onBasculerFavori={basculerFavori}
       />
+    
     </section>
   );
 }
