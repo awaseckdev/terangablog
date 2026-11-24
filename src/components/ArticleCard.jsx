@@ -9,7 +9,10 @@ export default function ArticleCard({ article, estFavori, onBasculerFavori }) {
         <Link to={`/articles/${article.id}`}>{article.title}</Link>
       </h3>
       <p>{extrait}</p>
-      <button onClick={() => onBasculerFavori(article)}>
+      <button
+  className={estFavori ? "bouton-favori actif" : "bouton-favori"}
+  onClick={() => onBasculerFavori(article)}
+>
         {estFavori ? "Retirer des favoris" : "Ajouter aux favoris"}
       </button>
     </article>
