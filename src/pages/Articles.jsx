@@ -1,6 +1,6 @@
-// TODO(P402) : Étape 4 puis 5.
 // Liste des articles chargés depuis l'API, avec recherche.
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router";
 import { API_URL } from "../constants";
 import EtatRequete from "../components/EtatRequete";
 import BarreRecherche from "../components/BarreRecherche";
@@ -11,7 +11,8 @@ export default function Articles() {
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
   const [recherche, setRecherche] = useState("");
-  const [favoris, setFavoris] = useState([]);
+  const { favoris, basculerFavori } = useOutletContext();
+  
 
   useEffect(() => {
     const controleur = new AbortController();
@@ -41,11 +42,7 @@ export default function Articles() {
     return () => controleur.abort();
   }, []);
 
-  function basculerFavori(id) {
-    setFavoris((f) =>
-      f.includes(id) ? f.filter((x) => x !== id) : [...f, id]
-    );
-  }
+  
 
   const articlesFiltres = articles.filter((article) =>
     article.title.toLowerCase().includes(recherche.toLowerCase())
@@ -54,7 +51,7 @@ export default function Articles() {
   return (
     <section>
       <h1>Articles</h1>
-      <p>{favoris.length} article(s) en favori</p>
+     
       <BarreRecherche valeur={recherche} onChangement={setRecherche} />
       <EtatRequete chargement={chargement} erreur={erreur}>
         <ListeArticles

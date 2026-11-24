@@ -1,4 +1,3 @@
-// TODO(P602) : Étape 6, niveau Or (facultatif).
 // Page protégée : accessible seulement une fois connecté.
 export default function MonEspace() {
   return <p className="discret">MonEspace : à construire (TODO P602).</p>;

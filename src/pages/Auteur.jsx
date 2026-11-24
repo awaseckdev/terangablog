@@ -1,10 +1,11 @@
-// TODO(P405) : Étape 4 puis 5.
 // Fiche d'un auteur (paramètre d'URL id) et ses articles.
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router";
 import { API_URL } from "../constants";
 import EtatRequete from "../components/EtatRequete";
 
-export default function Auteur({ id }) {
+export default function Auteur() {
+  const { id } = useParams();
   const [auteur, setAuteur] = useState(null);
   const [articles, setArticles] = useState([]);
   const [chargement, setChargement] = useState(true);
@@ -55,7 +56,9 @@ export default function Auteur({ id }) {
             <h2>Articles de l'auteur ({articles.length})</h2>
             <ul>
               {articles.map((article) => (
-                <li key={article.id}>{article.title}</li>
+               <li key={article.id}>
+  <Link to={`/articles/${article.id}`}>{article.title}</Link>
+</li>
               ))}
             </ul>
           </>

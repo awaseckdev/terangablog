@@ -1,6 +1,6 @@
-// TODO(P404) : Étape 4 puis 5.
 // Liste des auteurs chargés depuis l'API.
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { API_URL } from "../constants";
 import EtatRequete from "../components/EtatRequete";
 
@@ -43,9 +43,11 @@ export default function Auteurs() {
         <ul>
           {auteurs.map((auteur) => (
             <li key={auteur.id}>
-              <strong>{auteur.name}</strong> (@{auteur.username}) -{" "}
-              {auteur.company.name}
-            </li>
+  <Link to={`/auteurs/${auteur.id}`}>
+    <strong>{auteur.name}</strong>
+  </Link>{" "}
+  (@{auteur.username}) - {auteur.company.name}
+</li>
           ))}
         </ul>
       </EtatRequete>

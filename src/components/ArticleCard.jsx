@@ -1,13 +1,15 @@
-// Carte d'un article.
-// Props attendues : article (objet avec id, title, body), estFavori, onBasculerFavori.
+import { Link } from "react-router";
+
 export default function ArticleCard({ article, estFavori, onBasculerFavori }) {
   const extrait = article.body.slice(0, 80) + "...";
 
   return (
     <article className="carte">
-      <h3>{article.title}</h3>
+      <h3>
+        <Link to={`/articles/${article.id}`}>{article.title}</Link>
+      </h3>
       <p>{extrait}</p>
-      <button onClick={() => onBasculerFavori(article.id)}>
+      <button onClick={() => onBasculerFavori(article)}>
         {estFavori ? "Retirer des favoris" : "Ajouter aux favoris"}
       </button>
     </article>

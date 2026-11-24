@@ -1,35 +1,55 @@
-import { useState } from "react";
+// Page d'accueil : présentation et les derniers articles.
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router";
+import { API_URL } from "../constants";
+import EtatRequete from "../components/EtatRequete";
 import ListeArticles from "../components/ListeArticles";
-import BarreRecherche from "../components/BarreRecherche";
-import { articlesDeTest } from "../donnees-test";
 
-// TODO(P502) : Étape 5.
 export default function Accueil() {
-  const [favoris, setFavoris] = useState([]);
-  const [recherche, setRecherche] = useState("");
+  const { favoris, basculerFavori } = useOutletContext();
+  const [articles, setArticles] = useState([]);
+  const [chargement, setChargement] = useState(true);
+  const [erreur, setErreur] = useState(null);
 
-const articlesFiltres = articlesDeTest.filter((article) =>
-  article.title.toLowerCase().includes(recherche.toLowerCase())
-);
+  useEffect(() => {
+    const controleur = new AbortController();
 
-  function basculerFavori(id) {
-    setFavoris((f) =>
-      f.includes(id) ? f.filter((x) => x !== id) : [...f, id]
-    );
-  }
+    async function charger() {
+      try {
+        setChargement(true);
+        setErreur(null);
+        const reponse = await fetch(`${API_URL}/posts?_limit=3`, {
+          signal: controleur.signal,
+        });
+        if (!reponse.ok) {
+          throw new Error("code " + reponse.status);
+        }
+        setArticles(await reponse.json());
+        setChargement(false);
+      } catch (e) {
+        if (e.name === "AbortError") return;
+        setErreur("Impossible de charger les articles (" + e.message + ").");
+        setChargement(false);
+      }
+    }
+
+    charger();
+
+    return () => controleur.abort();
+  }, []);
 
   return (
-   
     <section>
       <h1>Bienvenue sur Teranga Blog</h1>
-      <p>{favoris.length} article(s) en favori</p>
-      <BarreRecherche valeur={recherche} onChangement={setRecherche} />
-      <ListeArticles
-        articles={articlesFiltres}
-        favoris={favoris}
-        onBasculerFavori={basculerFavori}
-      />
-    
+      <p>Le blog de Teranga Academy : lisez, commentez et gardez vos articles préférés.</p>
+      <h2>Derniers articles</h2>
+      <EtatRequete chargement={chargement} erreur={erreur}>
+        <ListeArticles
+          articles={articles}
+          favoris={favoris}
+          onBasculerFavori={basculerFavori}
+        />
+      </EtatRequete>
     </section>
   );
 }
