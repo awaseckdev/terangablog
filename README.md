@@ -27,6 +27,6 @@ Puis ouvrir l'adresse affichée dans le terminal.
 
 ## Trois choses que j'ai apprises
 
-1.AbortController empêche qu'une ancienne réponse remplace la nouvelle quand on change d'article.
-2.Les favoris sont dans LayoutPrincipal pour être partagés entre les pages.
-3.Ce qu'on lit dans l'adresse avec useParams est du texte.
+1. AbortController empêche qu'une ancienne réponse remplace la nouvelle quand on change d'article.
+2. Les favoris sont dans LayoutPrincipal pour être partagés entre les pages.
+3. Ce qu'on lit dans l'adresse avec useParams est du texte.
