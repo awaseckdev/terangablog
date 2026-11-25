@@ -23,7 +23,7 @@ Puis ouvrir l'adresse affichée dans le terminal.
 
 ## Version en ligne
 
-https://terangablog-2ozvtjimy-awa-seck.vercel.app
+https://terangablog-sigma.vercel.app
 
 ## Trois choses que j'ai apprises
 
