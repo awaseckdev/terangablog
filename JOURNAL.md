@@ -1,0 +1,16 @@
+# Journal de bord : usage de l'IA
+
+Outil utilisé : Claude (assistant IA), avec deux comptes différents (précisé quand c'est le cas).
+
+Le professeur a autorisé l'usage de l'IA sur ce projet, à condition de savoir expliquer chaque fichier à la présentation. Les demandes de CSS ne sont pas listées, conformément au cahier des charges.
+
+| Date | Question posée | Ce que j'ai retenu | Ce que j'ai écrit moi-même |
+|------|----------------|--------------------|----------------------------|
+| 22/11/2026 | Étape 1 : comment faire la carte d'article et l'afficher sur l'accueil (props) | Un composant reçoit un objet `article` en props, qui se lisent sans être modifiés ; l'extrait se calcule | Ma première version d'`ArticleCard` (titre) et d'`Accueil` avec trois cartes ; j'ai ajouté l'extrait à partir du code proposé et testé dans le navigateur |
+| 22/11/2026 | Étape 2 : comment gérer les favoris et le compteur | L'état est remonté dans le parent (`Accueil`), le compteur se calcule avec `favoris.length`, on ne modifie jamais le tableau en place | J'ai recopié le code proposé, aligné les noms de props (`onBasculerFavori`) et testé les clics et le compteur |
+| 22/11/2026 | Étape 3 : liste, recherche et formulaire de commentaires | `key={article.id}` et pas l'index ; `filter` crée un nouveau tableau ; champ contrôlé ; `preventDefault` ; validation avant ajout | J'ai appliqué le code proposé fichier par fichier et corrigé mes erreurs de placement (bloc collé dans le mauvais fichier, balise en trop) |
+| 22/11/2026 | Étape 4 : charger les données de l'API avec `useEffect` et `fetch` | Les trois états d'une requête ; `response.ok` ; `AbortController` pour nettoyer l'effet ; `[id]` relance la requête | J'ai appliqué le code proposé pour `EtatRequete`, `Articles`, `Article`, `Auteurs` et `Auteur`, testé le latin de l'API et le message d'erreur, et corrigé une erreur de placement dans `Article.jsx` |
+| 24/11/2026 | Étape 5 : routeur, layout et favoris partagés | `Outlet`, `NavLink`, `useParams` (valeur en texte), `useOutletContext` | J'ai repris le code proposé pour `router.jsx`, `LayoutPrincipal`, `Article`, `Auteur` et `Auteurs`, et testé les adresses (`/articles/3`, `/auteurs/2`) |
+| 24/11/2026 | Étape 5, avec un autre compte Claude : pages Favoris et Introuvable | `Favoris` lit `favoris` et `basculerFavori` avec `useOutletContext` et réutilise `ListeArticles` ; la page 404 est la route `*` avec un lien vers l'accueil | J'ai collé le code proposé dans `Favoris.jsx` et `Introuvable.jsx`, testé l'ajout et le retrait de favoris, et supprimé les marqueurs TODO |
+| 24/11/2026 | Étape 6, avec un autre compte Claude : modèle de README | Le README décrit l'application, comment la lancer et ce que j'ai appris | J'ai écrit mes trois apprentissages dans le README |
+| 24/11/2026 | Étape 6 : dépôt GitHub personnel et déploiement sur Vercel | `vercel.json` renvoie toutes les adresses vers `index.html` pour que `/articles/3` marche après rechargement ; le remote doit pointer sur mon dépôt | J'ai créé le dépôt `terangablog`, poussé mon code, importé le projet dans Vercel, puis ajouté l'adresse en ligne dans le README |
