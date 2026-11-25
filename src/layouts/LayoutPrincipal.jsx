@@ -7,6 +7,7 @@ import { Link, NavLink, Outlet } from "react-router";
 
 export default function LayoutPrincipal() {
   const [favoris, setFavoris] = useState([]);
+  const [connecte, setConnecte] = useState(false);
 
   function basculerFavori(article) {
     setFavoris((f) =>
@@ -26,17 +27,19 @@ export default function LayoutPrincipal() {
               alt="Teranga Blog"
               className="logo"
             />
+            
           </Link>
           <NavLink to="/" end>
             Accueil
           </NavLink>
           <NavLink to="/articles">Articles</NavLink>
           <NavLink to="/auteurs">Auteurs</NavLink>
+          <NavLink to="/mon-espace">Mon espace</NavLink>
           <NavLink to="/favoris">Favoris ({favoris.length})</NavLink>
         </nav>
       </header>
       <main>
-        <Outlet context={{ favoris, basculerFavori }} />
+        <Outlet context={{ favoris, basculerFavori, connecte, setConnecte }} />
       </main>
     </>
   );

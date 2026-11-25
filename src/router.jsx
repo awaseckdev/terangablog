@@ -7,6 +7,8 @@ import Auteurs from "./pages/Auteurs.jsx";
 import Auteur from "./pages/Auteur.jsx";
 import Favoris from "./pages/Favoris.jsx";
 import Introuvable from "./pages/Introuvable.jsx";
+import Connexion from "./pages/Connexion.jsx";
+import MonEspace from "./pages/MonEspace.jsx";
 
 
 export const router = createBrowserRouter([
@@ -20,6 +22,8 @@ export const router = createBrowserRouter([
       { path: "auteurs", element: <Auteurs /> },
       { path: "auteurs/:id", element: <Auteur /> },
       { path: "favoris", element: <Favoris /> },
+      { path: "connexion", element: <Connexion /> },
+      { path: "mon-espace", element: <MonEspace /> },
       { path: "*", element: <Introuvable /> },
     ],
   },
